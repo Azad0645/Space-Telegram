@@ -3,7 +3,7 @@
 Project description:
 - This bot automatically publishes photos from NASA, SpaceX and EPIC to your Telegram channel at a specified interval. 
 
-## How to install and launch
+## How to install 
 
 Create a bot in Telegram:
 - Go to Telegram and write to the bot @BotFather.
@@ -19,8 +19,23 @@ Installing dependencies:
 - Python 3 must already be installed.
 - `pip install -r requirements.txt`
 
-Launch the bot:
-- `python photo_publisher.py`
+## Examples of running all scripts
+
+Automatic publication of photos every 4 hours:
+-  `python photo_publisher.py`
+
+Sending one photo (specified or random):
+- `python my_bot.py --photo "epic_images/epic_1.jpg"`
+- `python my_bot.py`
+
+Uploading photos from NASA APOD:
+- `python fetch_nasa_apod.py`
+
+Uploading EPIC photos:
+- `python fetch_nasa_epic.py`
+
+Uploading SpaceX photos:
+- `python fetch_spacex_images.py`
 
 ## Project goal
 
