@@ -8,10 +8,10 @@ API_KEY = get_env_variable("NASA_API_KEY")
 def get_epic_images(api_key, count=5):
     url = "https://api.nasa.gov/EPIC/api/natural"
     params = {"api_key": api_key}
-    data = fetch_json(url, params=params)
+    json_response = fetch_json(url, params=params)
 
     image_urls = []
-    for item in data[:count]:
+    for item in json_response[:count]:
         date = item['date'].split(" ")[0]
         year, month, day = date.split("-")
         image_name = item['image']

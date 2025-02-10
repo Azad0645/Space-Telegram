@@ -8,8 +8,8 @@ def get_spacex_photos(launch_id=None):
         url = f"{url}/{launch_id}"
     else:
         url = f"{url}/latest"
-    data = fetch_json(url)
-    return data['links']['flickr']['original']
+    json_response = fetch_json(url)
+    return json_response['links']['flickr']['original']
 
 
 def main():

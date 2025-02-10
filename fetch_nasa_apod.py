@@ -8,8 +8,8 @@ API_KEY = get_env_variable("NASA_API_KEY")
 def get_apod_images(api_key, count=30):
     url = "https://api.nasa.gov/planetary/apod"
     params = {"api_key": api_key, "count": count}
-    data = fetch_json(url, params=params)
-    return [item['url'] for item in data if item['media_type'] == 'image']
+    json_response = fetch_json(url, params=params)
+    return [item['url'] for item in json_response if item['media_type'] == 'image']
 
 
 def main():
