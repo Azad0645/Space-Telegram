@@ -8,16 +8,18 @@ TOKEN = get_env_variable("TOKEN")
 CHAT_ID = get_env_variable("CHAT_ID")
 
 
-PHOTO_FOLDER = 'epic_images'
-PHOTO_PATH = 'epic_images/epic_1.jpg'
+def main():
+    photo_folder = 'epic_images'
+    photo_path = 'epic_images/epic_1.jpg'
+
+    if not  photo_path:
+        photo_path = os.path.join(photo_folder, random.choice(os.listdir(photo_folder)))
+
+    bot = Bot(token=TOKEN)
+
+    with open(photo_path, 'rb') as photo:
+        bot.send_photo(chat_id=CHAT_ID, photo=photo)
 
 
-if not PHOTO_PATH:
-    PHOTO_PATH = os.path.join(PHOTO_FOLDER, random.choice(os.listdir(PHOTO_FOLDER)))
-
-
-bot = Bot(token=TOKEN)
-
-
-with open(PHOTO_PATH, 'rb') as photo:
-    bot.send_photo(chat_id=CHAT_ID, photo=photo)
+if __name__ == "__main__":
+    main()
