@@ -2,7 +2,7 @@ import argparse
 from utils import fetch_json, download_images
 
 
-def get_spacex_photos(launch_id=None):
+def get_spacex_image_urls(launch_id=None):
     url = "https://api.spacexdata.com/v5/launches"
     if launch_id:
         url = f"{url}/{launch_id}"
@@ -19,7 +19,7 @@ def main():
     args = parser.parse_args()
 
 
-    photos = get_spacex_photos(launch_id=args.launch_id)
+    photos = get_spacex_image_urls(launch_id=args.launch_id)
     download_images(photos, folder=args.folder, prefix="spacex_photo")
 
 

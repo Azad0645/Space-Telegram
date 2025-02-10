@@ -5,7 +5,7 @@ from utils import fetch_json, download_images, get_env_variable
 API_KEY = get_env_variable("NASA_API_KEY")
 
 
-def get_epic_images(api_key, count=5):
+def get_epic_image_urls(api_key, count=5):
     url = "https://api.nasa.gov/EPIC/api/natural"
     params = {"api_key": api_key}
     json_response = fetch_json(url, params=params)
@@ -28,7 +28,7 @@ def main():
     args = parser.parse_args()
 
 
-    image_urls = get_epic_images(api_key=API_KEY, count=args.count)
+    image_urls = get_epic_image_urls(api_key=API_KEY, count=args.count)
     download_images(image_urls, folder=args.folder, prefix="epic")
 
 
