@@ -1,11 +1,8 @@
 import argparse
-from utils import fetch_json, download_images
-from dotenv import load_dotenv
-import os
+from utils import fetch_json, download_images, get_env_variable
 
 
-load_dotenv()
-API_KEY = os.getenv("NASA_API_KEY")
+API_KEY = get_env_variable("NASA_API_KEY")
 
 
 def get_apod_images(api_key, count=30):

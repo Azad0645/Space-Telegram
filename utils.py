@@ -1,5 +1,13 @@
 import os
 import requests
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+
+def get_env_variable(name):
+    return os.getenv(name)
 
 
 def fetch_json(url, params=None):

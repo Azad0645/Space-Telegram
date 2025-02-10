@@ -1,12 +1,11 @@
 from telegram import Bot
-from dotenv import load_dotenv
+from utils import get_env_variable
 import os
 import random
 
 
-load_dotenv()
-TOKEN = os.getenv("TOKEN")
-CHAT_ID = os.getenv("CHAT_ID")
+TOKEN = get_env_variable("TOKEN")
+CHAT_ID = get_env_variable("CHAT_ID")
 
 
 PHOTO_FOLDER = 'epic_images'
