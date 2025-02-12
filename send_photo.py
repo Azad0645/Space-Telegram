@@ -4,8 +4,8 @@ import os
 import random
 
 
-TOKEN = get_env_variable("TOKEN")
-CHAT_ID = get_env_variable("CHAT_ID")
+TELEGRAM_TOKEN = get_env_variable("TELEGRAM_TOKEN")
+TG_CHAT_ID = get_env_variable("TG_CHAT_ID")
 
 
 def main():
@@ -15,10 +15,10 @@ def main():
     if not  photo_path:
         photo_path = os.path.join(photo_folder, random.choice(os.listdir(photo_folder)))
 
-    bot = Bot(token=TOKEN)
+    bot = Bot(token=TELEGRAM_TOKEN)
 
     with open(photo_path, 'rb') as photo:
-        bot.send_photo(chat_id=CHAT_ID, photo=photo)
+        bot.send_photo(chat_id=TG_CHAT_ID, photo=photo)
 
 
 if __name__ == "__main__":

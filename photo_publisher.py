@@ -10,8 +10,8 @@ def get_args():
     parser = argparse.ArgumentParser(description="Automatic publication of photos in the Telegram channel.")
     parser.add_argument("--folder", type=str, default="nasa_apod_images", help="Folder with photos")
     parser.add_argument("--interval", type=int, default=4 * 60 * 60, help="Photo sending interval in seconds")
-    parser.add_argument("--chat_id", type=str, default=get_env_variable("CHAT_ID"), help="Telegram channel ID")
-    parser.add_argument("--token", type=str, default=get_env_variable("TOKEN"), help="Telegram bot token")
+    parser.add_argument("--chat_id", type=str, default=get_env_variable("TG_CHAT_ID"), help="Telegram channel ID")
+    parser.add_argument("--token", type=str, default=get_env_variable("TELEGRAM_TOKEN"), help="Telegram bot token")
 
     return parser.parse_args()
 
