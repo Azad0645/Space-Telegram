@@ -14,10 +14,10 @@ def get_args():
     return parser.parse_args()
 
 
-def get_photo_list(photo_folder):
-    photo_list = [os.path.join(photo_folder, f) for f in os.listdir(photo_folder)]
-    random.shuffle(photo_list)
-    return photo_list
+def get_photos(folder):
+    photos  = [os.path.join(folder, f) for f in os.listdir(folder)]
+    random.shuffle(photos)
+    return photos
 
 
 def main():
@@ -29,7 +29,7 @@ def main():
     bot = Bot(token=telegram_token)
 
     while True:
-        photos = get_photo_list(args.folder)
+        photos = get_photos(args.folder)
         for photo in photos:
             with open(photo, 'rb') as file:
                 bot.send_photo(chat_id=tg_chat_id, photo=file)
