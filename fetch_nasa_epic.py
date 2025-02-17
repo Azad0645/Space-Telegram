@@ -1,8 +1,7 @@
+import os
 import argparse
-from utils import fetch_json, download_images, get_env_variable
-
-
-API_KEY = get_env_variable("NASA_API_KEY")
+from dotenv import load_dotenv
+from utils import fetch_json, download_images
 
 
 def get_epic_image_urls(api_key, count=5):
@@ -22,13 +21,17 @@ def get_epic_image_urls(api_key, count=5):
 
 
 def main():
+    load_dotenv()
+
+    api_key = os.getenv("NASA_API_KEY")
+
     parser = argparse.ArgumentParser(description="Fetch NASA EPIC images.")
     parser.add_argument("--count", type=int, default=5, help="Number of EPIC images to fetch")
     parser.add_argument("--folder", type=str, default="epic_images", help="Folder to save NASA EPIC images")
     args = parser.parse_args()
 
 
-    image_urls = get_epic_image_urls(api_key=API_KEY, count=args.count)
+    image_urls = get_epic_image_urls(api_key=api_key, count=args.count)
     download_images(image_urls, folder=args.folder, prefix="epic")
 
 
