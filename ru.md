@@ -25,8 +25,8 @@
 -  `python photo_publisher.py`
 
 Отправка одного фото (указанного или случайного):
-- `python my_bot.py --photo "epic_images/epic_1.jpg"`
-- `python my_bot.py`
+- `python send_photo.py --photo "epic_images/epic_1.jpg"`
+- `python send_photo.py`
 
 Загрузка фото с NASA APOD:
 - `python fetch_nasa_apod.py`
