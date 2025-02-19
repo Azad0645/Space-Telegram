@@ -1,14 +1,14 @@
 import os
 import argparse
 from dotenv import load_dotenv
-from utils import fetch_json, download_images
+from utils import fetch_api_data, download_images
 
 
 def get_apod_image_urls(api_key, count=30):
     url = "https://api.nasa.gov/planetary/apod"
     params = {"api_key": api_key, "count": count}
-    json_response = fetch_json(url, params=params)
-    return [item['url'] for item in json_response if item['media_type'] == 'image']
+    response = fetch_api_data(url, params=params)
+    return [item['url'] for item in response if item['media_type'] == 'image']
 
 
 def main():

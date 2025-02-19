@@ -1,11 +1,11 @@
 import argparse
-from utils import fetch_json, download_images
+from utils import fetch_api_data, download_images
 
 
 def get_spacex_image_urls(launch_id="latest"):
     url = f"https://api.spacexdata.com/v5/launches/{launch_id}"
-    json_response = fetch_json(url)
-    return json_response['links']['flickr']['original']
+    response = fetch_api_data(url)
+    return response['links']['flickr']['original']
 
 
 def main():

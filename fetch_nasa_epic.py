@@ -1,16 +1,16 @@
 import os
 import argparse
 from dotenv import load_dotenv
-from utils import fetch_json, download_images
+from utils import fetch_api_data, download_images
 
 
 def get_epic_image_urls(api_key, count=5):
     url = "https://api.nasa.gov/EPIC/api/natural"
     params = {"api_key": api_key}
-    json_response = fetch_json(url, params=params)
+    response = fetch_api_data(url, params=params)
 
     image_urls = []
-    for item in json_response[:count]:
+    for item in response[:count]:
         date = item['date'].split(" ")[0]
         year, month, day = date.split("-")
         image_name = item['image']
