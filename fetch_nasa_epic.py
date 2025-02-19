@@ -10,10 +10,10 @@ def get_epic_image_urls(api_key, count=5):
     response = fetch_api_data(url, params=params)
 
     image_urls = []
-    for item in response[:count]:
-        date = item['date'].split(" ")[0]
+    for epic_image  in response[:count]:
+        date = epic_image ['date'].split(" ")[0]
         year, month, day = date.split("-")
-        image_name = item['image']
+        image_name = epic_image ['image']
         image_url = f"https://epic.gsfc.nasa.gov/archive/natural/{year}/{month}/{day}/jpg/{image_name}.jpg"
         image_urls.append(image_url)
 
