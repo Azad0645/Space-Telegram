@@ -1,7 +1,15 @@
-from telegram import Bot
-from dotenv import load_dotenv
 import os
 import random
+import argparse
+from dotenv import load_dotenv
+from telegram import Bot
+
+
+def get_args():
+    parser = argparse.ArgumentParser(description="Send a photo to a Telegram channel.")
+    parser.add_argument("--photo", type=str, help="Path to the photo")
+    parser.add_argument("--folder", type=str, default="epic_images", help="Folder with images (if no photo specified)")
+    return parser.parse_args()
 
 
 def main():
@@ -10,10 +18,12 @@ def main():
     telegram_token = os.getenv("TELEGRAM_TOKEN")
     tg_chat_id = os.getenv("TG_CHAT_ID")
 
-    photo_folder = 'epic_images'
-    photo_path = 'epic_images/epic_1.jpg'
+    args = get_args()
 
-    if not  photo_path:
+    if args.photo:
+        photo_path = args.photo
+    else:
+        photo_folder = args.folder
         photo_path = os.path.join(photo_folder, random.choice(os.listdir(photo_folder)))
 
     bot = Bot(token=telegram_token)
